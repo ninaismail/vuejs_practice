@@ -1,7 +1,7 @@
 <template>
   <main class="font-Aktifo">
-  <header class="fixed inset-0 h-[74px] bg-white md:w-8/12 flex justify-between items-center mx-auto gap-2 p-4">
-    <img alt="AITS logo" src="./assets/AITS.webp" width="77" height="26" responsive/>
+  <header class="sticky left-0 top-[20px] h-[74px] md:w-8/12 flex justify-between items-center mx-auto gap-2 px-4" :class="{'bg-accent1 rounded-full' : changecolor}">
+    <img :src="changecolor ? logowhite : logo" alt="AITS logo" width="77" height="26" responsive/>
     <button
       @click="isOpen = !isOpen"
       type="button"
@@ -13,7 +13,7 @@
         width="20"
         height="20"
         viewBox="0 0 20 20"
-        className="hover:scale-110 scale-100 transition-transform">
+        className="hover:scale-110 scale-100 transition-transform text-accent1">
         <path
           id="xmark-solid"
           d="M19.333,99.341a2,2,0,1,0-2.83-2.83L9.925,103.1,3.341,96.517a2,2,0,0,0-2.83,2.83L7.1,105.925.517,112.509a2,2,0,0,0,2.83,2.83l6.578-6.584,6.584,6.578a2,2,0,0,0,2.83-2.83l-6.584-6.578Z"
@@ -43,28 +43,41 @@
       <RouterLink to="/careers" class="text-accent1 font-bold hover:brightness-125 uppercase">Careers</RouterLink>
       <RouterLink to="/contact" class="text-accent1 font-bold hover:brightness-125 uppercase">Contact</RouterLink>
     </nav>
-    <nav class="w-full hidden md:flex items-center mx-auto gap-6">
-      <RouterLink to="/" class="text-accent1 font-bold hover:brightness-125 uppercase">Home</RouterLink>
-      <RouterLink to="/about" class="text-accent1 font-bold hover:brightness-125 uppercase">About</RouterLink>
-      <RouterLink to="/industries" class="text-accent1 font-bold hover:brightness-125 uppercase">Industries</RouterLink>
-      <RouterLink to="/resources" class="text-accent1 font-bold hover:brightness-125 uppercase">Resources</RouterLink>
-      <RouterLink to="/careers" class="text-accent1 font-bold hover:brightness-125 uppercase">Careers</RouterLink>
-      <RouterLink to="/contact" class="text-accent1 font-bold hover:brightness-125 uppercase">Contact</RouterLink>
+    <nav class="w-full hidden md:flex justify-center items-center mx-auto ps-4 gap-6">
+      <RouterLink to="/" class="text-accent1 font-bold hover:brightness-125 uppercase" :class="{'text-bg' : changecolor}">Home</RouterLink>
+      <RouterLink to="/about" class="text-accent1 font-bold hover:brightness-125 uppercase" :class="{'text-bg' : changecolor}">About</RouterLink>
+      <RouterLink to="/industries" class="text-accent1 font-bold hover:brightness-125 uppercase" :class="{'text-bg' : changecolor}">Industries</RouterLink>
+      <RouterLink to="/resources" class="text-accent1 font-bold hover:brightness-125 uppercase" :class="{'text-bg' : changecolor}">Resources</RouterLink>
+      <RouterLink to="/careers" class="text-accent1 font-bold hover:brightness-125 uppercase" :class="{'text-bg' : changecolor}">Careers</RouterLink>
+      <RouterLink to="/contact" class="text-accent1 font-bold hover:brightness-125 uppercase" :class="{'text-bg' : changecolor}">Contact</RouterLink>
     </nav>
   </header>
 
   <RouterView />
   </main>
 </template>
-<script>
+<script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import { ref, onMounted, onUnmounted } from 'vue'
+import logo from './assets/AITS.webp'
+import logowhite from './assets/AITSwhite.webp'
+const isOpen = ref(false)
+const changecolor = ref(false);
 
-export default {
-  name: "App",
-  data() {
-    return {
-      isOpen: false,
-    };
+const changeColor = () => {
+  if (window.scrollY > 10) {
+    changecolor.value = true;
+  } else {
+    changecolor.value = false;
   }
-}
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", changeColor);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", changeColor);
+});
+
 </script>

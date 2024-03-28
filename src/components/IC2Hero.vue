@@ -8,8 +8,6 @@
   </section>
 </template>
 
-<script>
-    export default {
-        name:"IC2Hero"
-    }
+<script setup>
+
 </script>

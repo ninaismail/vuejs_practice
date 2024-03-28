@@ -3,12 +3,9 @@
     :class="{ 'bg-black text-white' : isPrimary }">{{ message }}</button>
 </template>
 
-<script>
-    export default {
-    name:"Button",
-    props: {
-        message: String,
-        isPrimary: Boolean
-    },
-    }
+<script setup>
+const props = defineProps({
+    message: String,
+    isPrimary: Boolean
+})
 </script>
