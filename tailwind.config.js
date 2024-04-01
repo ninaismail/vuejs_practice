@@ -7,7 +7,7 @@ export default {
         Aktifo: ["Aktifo"],
       },
       colors: {
-      bg: "rgb(248, 250, 252)",
+      bg: "#FCFCFC",
       content: "rgb(71, 85, 105)",
       accent1: "rgb(53,93,131)",
       accent2: "rgb(255,122,0)",
