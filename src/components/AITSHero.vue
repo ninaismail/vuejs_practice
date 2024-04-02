@@ -1,5 +1,5 @@
 <template>
-  <section id="AITSHero" class="w-full md:-mt-[3em] mt-[70px] pb-2 h-screen mx-auto flex flex-col flex-wrap items-center justify-center space-y-4 bg-gradient-to-b from-bg from-10% to-accent1">
+  <section id="AITSHero" class="w-full lg:-mt-[4.3em] md:-mt-[3em] mt-[70px] pb-2 h-screen mx-auto flex flex-col flex-wrap items-center justify-center space-y-4 bg-gradient-to-b from-bg from-10% to-accent1">
     <div class="flex flex-col items-center w-10/12 mx-auto space-y-2 lg:w-6/12 sm:w-8/12">
     <h1 class="uppercase text-[30px] lg:text-7xl xl:text-8xl text-center font-bold text-bg">Lorem Ipsun <br/><span class="font-light">Dollor Sit</span></h1>
     <svg width="179" height="146" class="h-20" viewBox="0 0 179 146" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

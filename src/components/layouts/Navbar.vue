@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router'
 import { ref, onMounted, onUnmounted } from 'vue'
 import logo from '../../assets/AITS.webp'
 import logowhite from '../../assets/AITSwhite.webp'
-const navlinks = ref([
+const navlinks = [
   { id: 1, name: 'Home', to: '/' },
   { id: 2, name: 'About', to: '/about' },
   { 
@@ -33,7 +33,7 @@ const navlinks = ref([
     ]
   },
   { id: 6, name: 'Contact', to: '/contact' }
-])
+]
 
 const isOpen = ref(false)
 const openSubMenu = ref(null)
@@ -63,14 +63,13 @@ onUnmounted(() => {
     <!-- Desktop -->
     <nav v-for="(item, key) in navlinks" :key="key" class="relative items-center justify-end hidden w-full gap-6 mx-auto md:flex ps-4">
       <RouterLink :to="item.to" class="text-lg font-bold text-accent1 px-[14px] py-[10px] hover:rounded-full"
-        :class="{ 'text-bg hover:bg-[#477CA8]': changecolor, 'hover:bg-gray-100 bg-opacity-10': !changecolor }"
-        @mouseenter="openSubMenu = item.id" @mouseleave="openSubMenu = null">
+        :class="{ 'text-bg hover:bg-[#477CA8]': changecolor, 'hover:bg-gray-200 bg-opacity-10': !changecolor }"
+        @mouseenter="openSubMenu = item.id">
         {{ item.name }}
       </RouterLink>
       <nav v-if="item.submenu && openSubMenu === item.id"
-        class="w-full absolute left-1/2 top-[75px] flex flex-col space-y-2 backdrop-blur-sm bg-bg pb-4 shadow-lg rounded-[30px]"
-        :class="{ 'text-bg hover:bg-[#477CA8]': changecolor }">
-        <div v-for="(subitem, subkey) in item.submenu" :key="subkey" class="font-bold text-accent1 text-lg px-[14px] py-[10px]">
+        class="w-[150%] absolute left-1/2 top-[75px] p-4 flex flex-col space-y-2 backdrop-blur-sm bg-bg shadow-lg rounded-[30px]">
+        <div v-for="(subitem, subkey) in item.submenu" :key="subkey" class="font-bold text-accent1 text-lg px-[14px] py-[10px] hover:bg-gray-200 bg-opacity-10 rounded-full cursor-pointer">
           {{ subitem.name }}
         </div>
       </nav>
