@@ -32,7 +32,6 @@ const navlinks = [
       { id: 3, name: 'Employee Benefits' }
     ]
   },
-  { id: 6, name: 'Contact', to: '/contact' }
 ]
 
 const isOpen = ref(false)
@@ -57,23 +56,26 @@ onUnmounted(() => {
 </script>
 
 <template>
-   <header class="sticky left-0 top-[20px] h-[70px] lg:w-8/12 flex md:justify-center justify-between items-center mx-auto gap-2 px-6 rounded-full md:shadow-sm backdrop-blur-xl" 
+   <header class="fixed left-1/2 transform -translate-x-1/2 top-[20px] h-[70px] z-[1] lg:w-10/12 flex md:justify-center justify-between items-center mx-auto gap-2 px-6 rounded-full md:shadow-sm backdrop-blur-xl" 
    :class="{'bg-accent1' : changecolor, 'bg-bg/10' : !changecolor}">
     <img :src="changecolor ? logowhite : logo" alt="AITS logo" class="h-8" responsive/>
     <!-- Desktop -->
-    <nav v-for="(item, key) in navlinks" :key="key" class="relative items-center justify-end hidden w-full gap-6 mx-auto md:flex ps-4">
+    <nav class="items-center justify-center hidden w-2/5 mx-auto md:flex ps-4">
+      <div v-for="(item, key) in navlinks" :key="key" class="relative w-full">
       <RouterLink :to="item.to" class="text-lg font-bold text-accent1 px-[14px] py-[10px] hover:rounded-full"
-        :class="{ 'text-bg hover:bg-[#477CA8]': changecolor, 'hover:bg-gray-200 bg-opacity-10': !changecolor }"
+        :class="{ 'text-bg hover:bg-accent2': changecolor, 'hover:bg-gray-200 bg-opacity-10': !changecolor }"
         @mouseenter="openSubMenu = item.id">
         {{ item.name }}
       </RouterLink>
-      <nav v-if="item.submenu && openSubMenu === item.id"
-        class="w-[150%] absolute left-1/2 top-[75px] p-4 flex flex-col space-y-2 backdrop-blur-sm bg-bg shadow-lg rounded-[30px]">
+      <nav v-show="item.submenu && openSubMenu === item.id"
+        class="w-[150%] absolute left-0 top-[75px] p-4 flex flex-col space-y-2 backdrop-blur-sm bg-bg shadow-lg rounded-[30px]">
         <div v-for="(subitem, subkey) in item.submenu" :key="subkey" class="font-bold text-accent1 text-lg px-[14px] py-[10px] hover:bg-gray-200 bg-opacity-10 rounded-full cursor-pointer">
           {{ subitem.name }}
         </div>
-      </nav>
+      </nav></div>
     </nav>
+    <RouterLink to="contact" class="px-[14px] py-[10px] text-lg font-bold rounded-full hover:bg-accent2/70 bg-accent2 text-bg">
+    Contact</RouterLink>
     <!-- Mobile -->
     <button
       @click="isOpen = !isOpen"
@@ -108,10 +110,16 @@ onUnmounted(() => {
         />
       </svg>
     </button>
-    <nav v-for="(item, key) in navlinks" :key="key" v-show="isOpen"
-    class="w-full md:hidden absolute left-0 top-[70px] flex flex-col ps-4 pb-4 gap-6 bg-white shadow-sm">
+    <nav v-show="isOpen" class="w-full md:hidden absolute left-0 top-[70px] flex flex-col ps-4 pb-4 gap-6 bg-white shadow-sm">
+      <div v-for="(item, key) in navlinks" :key="key">
       <RouterLink :to="item.to" class="p-2 text-lg font-bold text-accent1">
       {{item.name}}</RouterLink>
+      <nav v-show="item.submenu && openSubMenu === item.id"
+        class="w-[150%] p-4 flex flex-col space-y-2 backdrop-blur-sm bg-bg shadow-lg rounded-[30px]">
+        <div v-for="(subitem, subkey) in item.submenu" :key="subkey" class="font-bold text-accent1 text-lg px-[14px] py-[10px] hover:bg-gray-200 bg-opacity-10 rounded-full cursor-pointer">
+          {{ subitem.name }}
+        </div>
+      </nav></div>
     </nav>
   </header>
 </template>

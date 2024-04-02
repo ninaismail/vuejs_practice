@@ -8,11 +8,9 @@ export default {
       },
       colors: {
       bg: "#F5F5F5",
-      content: "rgb(71, 85, 105)",
+      bg2: "#D9D9D9",
       accent1: "#32527B",
-      accent2: "rgb(255,122,0)",
-      darkaccent1: "rgb(154, 229, 154)",
-      darkaccent2: "rgb(154, 229, 154)",
+      accent2: "#477CA8",
       },
     }
   },

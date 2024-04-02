@@ -28,29 +28,29 @@ to: '/' }
 </script>
 
 <template>
-    <footer class="bg-bg flex flex-col justify-center items-center gap-2 pt-10 pb-4">
-        <div class="space-y-4 w-full text-center">
+    <footer class="flex flex-col items-center justify-center gap-2 pt-10 pb-4 bg-bg2">
+        <div class="w-full space-y-4 text-center">
             <img :src="logo" alt="AITS logo" class="h-8 mx-auto" responsive/>
-            <nav class="flex justify-center items-center w-full gap-6 mx-auto">
+            <nav class="flex items-center justify-center w-full gap-6 mx-auto">
             <RouterLink v-for="(item, key) in footerlinks" :key="key" :id="go-to-item.name" :to="item.to" class="text-sm font-bold text-accent1 hover:rounded-full">
                 {{ item.name }}
             </RouterLink>
             </nav>
-            <br class="h-2 text-white w-10/12"/>
-            <div class="flex justify-cnter items-center">
+            <br class="w-10/12 h-2 text-white"/>
+            <div class="flex items-center justify-cnter">
 
             </div>
-            <br class="h-2 text-white w-10/12"/>
+            <br class="w-10/12 h-2 text-white"/>
             
-            <div class="w-11/12 rouded-full bg-accent1 text-bg flex justify-between items-center rounded-full mx-auto">
-                <nav class="flex justify-center items-center w-full gap-6 mx-auto">
-                    <RouterLink v-for="(item, key) in sociallinks" :key="key" :id="go-to-item.name" :to="item.to" class="text-lg font-bold bg-bg text-accent1 p-2 rounded-full">
+            <div class="flex h-[70px] items-center justify-between w-10/12 p-4 mx-auto rounded-full rouded-full bg-accent1 text-bg">
+                <nav class="flex items-center justify-center w-1/5 gap-4 mx-auto">
+                    <RouterLink v-for="(item, key) in sociallinks" :key="key" :id="go-to-item.name" :to="item.to" class="p-2 text-lg font-bold rounded-full bg-bg text-accent1">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_257_405)"><path d="M24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 17.9895 4.3882 22.954 10.125 23.8542V15.4687H7.07812V12H10.125V9.35625C10.125 6.34875 11.9166 4.6875 14.6576 4.6875C15.9701 4.6875 17.3438 4.92187 17.3438 4.92187V7.875H15.8306C14.34 7.875 13.875 8.80008 13.875 9.75V12H17.2031L16.6711 15.4687H13.875V23.8542C19.6118 22.954 24 17.9895 24 12Z" fill="#32527B"/></g><defs><clipPath id="clip0_257_405"><rect width="24" height="24" fill="white"/></clipPath></defs></svg>
                     </RouterLink>
                 </nav> 
-                <p>© 2024 Cyberg Copyright</p>
-                <nav class="flex justify-center items-center w-full gap-6 mx-auto">
-                    <a v-for="(item, key) in pandtlinks" :key="key" :id="go-to-item.name" :href="item.to" :target="item.target" class="text-lg font-bold p-2 border-l">
+                <p class="w-3/5">© 2024 Cyberg Copyright</p>
+                <nav class="flex items-center justify-center w-1/5 gap-4 mx-auto">
+                    <a v-for="(item, key) in pandtlinks" :key="key" :id="go-to-item.name" :href="item.to" :target="item.target" class="font-bold hover:brightness-95" :class="{'border-e pe-3' : key === 0}">
                         {{ item.name }}
                     </a>
                 </nav> 
